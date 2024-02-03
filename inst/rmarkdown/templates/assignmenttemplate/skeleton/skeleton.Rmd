@@ -1,0 +1,132 @@
+---
+title             : "Your Main Title Goes Here"
+short title : "Short title"
+author: 
+  - name          : "Put your name here"
+    affiliation   : "1"
+    corresponding : no    # Define only one corresponding author
+    email         : "youremail@laurentian.ca"
+
+affiliation:
+  - id            : "1"
+    institution   : "Laurentian University"
+  - id            : "2"
+    institution   : "PSYCH 2126: Research Methods"
+    
+date: "`r Sys.Date()`"
+
+abstract: |
+  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
+  One sentence clearly stating the **general problem** being addressed by  this particular study.
+  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
+  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
+  One or two sentences to put the results into a more **general context**.
+  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+bibliography      : "r-references.bib"
+
+floatsintext      : no
+linenumbers       : no
+draft             : no
+mask              : no
+
+figurelist        : yes
+tablelist         : no
+footnotelist      : no
+
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+
+library("papaja")
+r_refs("r-references.bib")
+
+# HERE IS WHERE YOU WILL ADD ANY EXTRA PACKAGES YOU NEED.
+# Copy and paste any packages from the original Markdown file you played with into here.
+# Remember, a package can't be loaded if it is not installed.
+
+library(tidyverse)
+library(DataExplorer)
+library(sjPlot)
+library(ggplot2)
+library(ggstatsplot)
+
+# To install packages run the following code in the console pane:
+
+# install.packages("packagenamehere")
+
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+```{r, echo=FALSE, warning=FALSE}
+
+# load your data here. Let's load an example dataset--the famous Iris set--first:
+
+df <- data.frame(iris)
+
+```
+
+# Introduction
+Here you will add your brief literature review which should include a bit of background citing the papers you read in your initial research. You will also state your purpose, your hypotheses and justifications for them.
+
+You can copy and paste your writeup for these sections from Word or Google Docs or you can write directly in R Markdown. I recommend in the beginning writing in Word and just copy and pasting in R Markdown once you're ready.
+
+# Methods
+Here you will report your study design, including sample size, independent and dependent variable(s) and any other important bits. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+
+## Participants
+
+You can use the participants and procedure headers if you like, or you can leave them out and just summarise these in the Methods section. It's up to you.
+
+## Procedure
+
+## Data analysis
+
+Here you will cite the analysis you're going to conduct. Your descriptive statistics, ANOVA, correlations or whatever else you want to do.
+
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+# Results
+
+You will produce a histogram out of your outcome variable and a visualization of your results. Note the examples below. The tutorials will help you achieve this. When you hand your paper in, follow the tutorial "Final Steps to Prepare Your Document" which will show you how to hide the code chunks and ONLY display the visuals in the final .pdf.
+
+```{r, fig.cap="A Histogram"}
+
+hist(df$Sepal.Length)
+
+```
+
+
+```{r, fig.cap="A Boxplot"}
+
+df %>% 
+  ggplot(aes(x=Species, y=Sepal.Length, colour=Species))+
+  geom_point()+ 
+  geom_boxplot(stat="boxplot")
+
+```
+
+
+```{r, fig.cap="Between Subject Boxplot"}
+df %>% ggbetweenstats(x=Species, y=Sepal.Length, colour=Species)
+```
+
+# Discussion
+
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
