@@ -13,7 +13,7 @@ affiliation:
   - id            : "2"
     institution   : "PSYCH 2126: Research Methods"
     
-date: "`r Sys.Date()`"
+date: "2024-02-03"
 
 abstract: |
   One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
@@ -41,49 +41,11 @@ classoption       : "man"
 output            : papaja::apa6_pdf
 ---
 
-```{r setup, include = FALSE}
 
-library("papaja")
-r_refs("r-references.bib")
 
-# HERE IS WHERE YOU WILL ADD ANY EXTRA PACKAGES YOU NEED.
-# Copy and paste any packages from the original Markdown file you played with into here.
-# Remember, a package can't be loaded if it is not installed.
 
-library(tidyverse)
-library(DataExplorer)
-library(sjPlot)
-library(ggplot2)
-library(ggstatsplot)
-library(modelsummary)
-#library(aov)
-library(lme4)
-library(ggpubr)
-library(rstatix)
 
-# To install packages run the following code in the console pane:
 
-# install.packages("packagenamehere")
-
-```
-
-```{r analysis-preferences}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
-
-```
-
-```{r, echo=FALSE, warning=FALSE, include=FALSE}
-
-# load your data here. Let's load an example dataset--the famous Iris set--first:
-# Once you have your own data, you will place it in the "data" folder of your project. To load it, you will run the follow code (just remove the hashtag before running it)
-
-# df <- read.csv("data/yourdata.csv") # you will use this code when you have your data. For now practice with the sample data.
-
-df <- data.frame(PlantGrowth)
-
-```
 
 # Introduction
 
@@ -105,75 +67,40 @@ You can use the participants and procedure headers if you like, or you can leave
 
 Here you will cite the analysis you're going to conduct along with your descriptive statistics, ANOVA, correlations or whatever else you want to do.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-# Here you will conduct your analyses. I will give you detailed instructions on what analyses/packages to use for your specific analyses. I will send this with your data.
-
-# Here are a couple of example that you can delete once you have your own analyses.
-
-# https://www.datanovia.com/en/lessons/anova-in-r/ <- in depth tutorial
-
-
-datasummary_skim(df)
-
-# check the levels of your treatment variable 
-
-levels(df$group)
-
-# we see there are three levels
-```
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
-
-# For our purposes you want to be sure your control group is the first level. It is the level we'll compare the other levels to.
-
-# To reorder your variable:
-
-df <- df %>%
-  reorder_levels(group, order = c("ctrl", "trt1", "trt2"))
+\begin{table}
+\centering
+\begin{tabular}[t]{lrrrrrrr>{}r}
+\toprule
+  & Unique (\#) & Missing (\%) & Mean & SD & Min & Median & Max &   \\
+\midrule
+weight & 29 & 0 & \num{5.1} & \num{0.7} & \num{3.6} & \num{5.2} & \num{6.3} & \includegraphics[width=0.67in, height=0.17in]{D:/documents/R Projects/psych2126template/skeleton_files/figure-latex/hist_1f542439591e.pdf}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 ```
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
-
-# One way ANOVA
-# The one-way ANOVA can be used to determine whether the means of your outcome are significantly different between the three conditions.
-
-df %>%
-  group_by(group) %>%
-  get_summary_stats(weight, type = "mean_sd")
-
+## [1] "ctrl" "trt1" "trt2"
 ```
 
 
-We used `r cite_r("r-references.bib")` for all our analyses.
+
+
+
+
+We used R [Version 4.3.2\; @R-base] and the R-packages *papaja* [Version 0.1.2\; @R-papaja], and *tinylabels* [Version 0.2.4\; @R-tinylabels] for all our analyses.
 
 # Results
 
 Here you will report your results.
 You will produce a histogram out of your outcome variable and a visualization of your results. Note the examples below. The tutorials will help you achieve this. When you hand your paper in, follow the tutorial "Final Steps to Prepare Your Document" which will show you how to hide the code chunks and ONLY display the visuals in the final .pdf.
 
-```{r, fig.cap="A Histogram"}
-
-# Put your histogram here
-
-hist(df$weight)
-
-```
+![(\#fig:unnamed-chunk-5)A Histogram](skeleton_files/figure-latex/unnamed-chunk-5-1.pdf) 
 
 
-```{r, fig.cap="A Boxplot"}
-
-df %>% 
-  ggplot(aes(x=group, y=weight, colour=group))+
-  geom_point()+ 
-  geom_boxplot(stat="boxplot")
-
-```
+![(\#fig:unnamed-chunk-6)A Boxplot](skeleton_files/figure-latex/unnamed-chunk-6-1.pdf) 
 
 
-```{r, fig.cap="Between Subject Boxplot"}
-df %>% ggbetweenstats(x=group, y=weight)
-```
+![(\#fig:unnamed-chunk-7)Between Subject Boxplot](skeleton_files/figure-latex/unnamed-chunk-7-1.pdf) 
 
 # Discussion
 

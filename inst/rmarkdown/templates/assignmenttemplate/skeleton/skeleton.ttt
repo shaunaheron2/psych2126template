@@ -1,0 +1,12 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\begin{tabular}[t]{lrrrrrrr>{}r}
+\toprule
+  & Unique (\#) & Missing (\%) & Mean & SD & Min & Median & Max &   \\
+\midrule
+weight & 29 & 0 & \num{5.1} & \num{0.7} & \num{3.6} & \num{5.2} & \num{6.3} & \includegraphics[width=0.67in, height=0.17in]{D:/documents/R Projects/psych2126template/skeleton_files/figure-latex/hist_1f542439591e.pdf}\\
+\bottomrule
+\end{tabular}
+\end{table*}

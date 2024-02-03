@@ -212,9 +212,9 @@ Two or three sentences to provide a \textbf{broader perspective}, readily compre
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Here you will add your brief literature review which should include a bit of background citing the papers you read in your initial research. You will also state your purpose, your hypotheses and justifications for them.
+Here you will add your \textbf{brief} literature review which should include a bit of background citing the papers you read in your initial research. You will also state your purpose, your hypotheses and justifications for them.
 
-You can copy and paste your writeup for these sections from Word or Google Docs or you can write directly in R Markdown. I recommend in the beginning writing in Word and just copy and pasting in R Markdown once you're ready.
+You can copy and paste your write up for these sections from Word or Google Docs directly into R Markdown. You can also write directly in R Markdown like I do, but I recommend the former in the beginning. Baby steps!
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -224,7 +224,7 @@ Here you will report your study design, including sample size, independent and d
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
 
-You can use the participants and procedure headers if you like, or you can leave them out and just summarise these in the Methods section. It's up to you.
+You can use the participants and procedure headers if you like, or you can leave them out and just summarise them in the Methods section. These sections help organize a larger, thesis-length methods section but for our purposes they aren't necessary.
 
 \hypertarget{procedure}{%
 \subsection{Procedure}\label{procedure}}
@@ -232,31 +232,47 @@ You can use the participants and procedure headers if you like, or you can leave
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-Here you will cite the analysis you're going to conduct. Your descriptive statistics, ANOVA, correlations or whatever else you want to do.
+Here you will cite the analysis you're going to conduct along with your descriptive statistics, ANOVA, correlations or whatever else you want to do.
+
+\begin{table}
+\centering
+\begin{tabular}[t]{lrrrrrrr>{}r}
+\toprule
+  & Unique (\#) & Missing (\%) & Mean & SD & Min & Median & Max &   \\
+\midrule
+weight & 29 & 0 & \num{5.1} & \num{0.7} & \num{3.6} & \num{5.2} & \num{6.3} & \includegraphics[width=0.67in, height=0.17in]{D:/documents/R Projects/psych2126template/skeleton_files/figure-latex/hist_1f542439591e.pdf}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{verbatim}
+## [1] "ctrl" "trt1" "trt2"
+\end{verbatim}
 
 We used R (Version 4.3.2; R Core Team, 2023) and the R-packages \emph{papaja} (Version 0.1.2; Aust \& Barth, 2023), and \emph{tinylabels} (Version 0.2.4; Barth, 2023) for all our analyses.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
+Here you will report your results.
 You will produce a histogram out of your outcome variable and a visualization of your results. Note the examples below. The tutorials will help you achieve this. When you hand your paper in, follow the tutorial ``Final Steps to Prepare Your Document'' which will show you how to hide the code chunks and ONLY display the visuals in the final .pdf.
 
 \begin{figure}
 \centering
-\includegraphics{skeleton_files/figure-latex/unnamed-chunk-2-1.pdf}
-\caption{\label{fig:unnamed-chunk-2}A Histogram}
+\includegraphics{skeleton_files/figure-latex/unnamed-chunk-5-1.pdf}
+\caption{\label{fig:unnamed-chunk-5}A Histogram}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics{skeleton_files/figure-latex/unnamed-chunk-3-1.pdf}
-\caption{\label{fig:unnamed-chunk-3}A Boxplot}
+\includegraphics{skeleton_files/figure-latex/unnamed-chunk-6-1.pdf}
+\caption{\label{fig:unnamed-chunk-6}A Boxplot}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics{skeleton_files/figure-latex/unnamed-chunk-4-1.pdf}
-\caption{\label{fig:unnamed-chunk-4}Between Subject Boxplot}
+\includegraphics{skeleton_files/figure-latex/unnamed-chunk-7-1.pdf}
+\caption{\label{fig:unnamed-chunk-7}Between Subject Boxplot}
 \end{figure}
 
 \hypertarget{discussion}{%
